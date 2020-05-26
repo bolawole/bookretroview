@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <link rel="shortcut icon" href="#">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+   
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+      
+      
+      <link rel="stylesheet" href="{{url_for('static',filename='css/main.css')}}">
+      
+    <title>{%block title%}{%endblock%}</title>
+  </head>
+
+<body>
+  
+  <nav class= "navbar">
+   <a class="navbar-brand" href="{{url_for('index')}}">BOOKRETROVIEW</a>
+{% if logout==True%}
+    <ul>
+
+
+      <li class="home-nav"></div><a href="{{url_for('profile')}}">My Books</a></li>
+      <li class="home-nav"><a href="">Community</a></li>
+      <li class="home-nav"><a href="">License</a></li>
+
+
+    </ul>
+    <div class="nav-form">
+
+          <a href="{{url_for('logout')}}">  Log Out</a>
+        </div>
+        {% else %}
+        <ul>
+          <li class="home-nav"><a href="">Community</a></li>
+          <li class="home-nav"><a href="">License</a></li>
+
+
+        </ul>
+      <div class="nav-form">
+          <a href="{{url_for('login')}}">  Log In</a>
+          <a href="{{url_for('SignUp')}}">  Sign Up</a>
+        {%endif%}
+
+    </div>
+
+  </nav>
+<div class="container">
+{%block main_body%}
+{%endblock%}
+</div>
+
+
+<script src="{{url_for('static',filename='javascript/index.js')}}"></script>
+  </body>
+</html>

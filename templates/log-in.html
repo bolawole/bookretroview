@@ -1,0 +1,124 @@
+{%extends "layout.html"%}
+
+{%block title%}
+Log In
+{%endblock%}
+
+{% block main_body %}
+
+<div class="container">
+  <form method="POST" action="">
+    {{form.hidden_tag()}}
+    <fieldset class="form-group">
+      <legend class="">Log in</legend>
+      <div class="form-group">
+        {{form.username.label(class="form-control-label")}}
+        {%if form.username.errors%}
+        {{form.username(class="form-control is-invalid")}}
+        <div class="invalid-feedback">
+          {%for error in form.username.errors%}
+          <span>{{error}}</span>
+          {%endfor%}
+        </div>
+        
+        {%else%}
+        {{form.username(class="form-control")}}
+        {%endif%}
+      </div>
+      <div class="form-group">
+        {{form.password.label(class="form-control-label")}}
+        {%if form.password.errors%}
+        {{form.password(class="form-control is-invalid")}}
+        <div class="invalid-feedback">
+          {%for error in form.password.errors%}
+          <span>{{error}}</span>
+          {%endfor%}
+        </div>
+        
+        {%else%}
+        {{form.password(class="form-control")}}
+        {%endif%}
+      </div>
+      <div class="form-check">
+        {{form.remember(class="form-check-input")}}
+        {{form.remember.label(class="form-check-label")}}
+
+      </div>
+      <small>
+        {% with messages=get_flashed_messages(with_categories=true) %}
+        {%if messages%}
+        {%for category,message in messages%}
+        <div class="alert alert-{{category}}">
+          {{message}}
+        </div>
+        {%endfor%}
+        {%endif%}
+        {%endwith%}
+      </small> 
+      <div class="form-group">
+       
+        {{form.submit(class="btn btn-info my-4")}} 
+      </div>
+    </fieldset>
+    <div id="social-login">
+      <a href="#" class="fb btn">
+        <i class="fa fa-facebook fa-fw"></i> Login with Facebook
+      </a>
+      <a href="#" class="twitter btn">
+        <i class="fa fa-twitter fa-fw"></i> Login with Twitter
+      </a>
+      <a href="#" class="google btn">
+        <i class="fa fa-google fa-fw"></i> Login with Google+
+      </a>
+</div>
+
+  </form>
+  <small>Don't have an account? <a href="{{url_for('SignUp')}}">Sign Up</a></small>
+</div>
+
+
+
+<!--
+  <form class="form-format" action="" method="post">
+
+
+
+<ul id="ul">
+    <li class="form-format">    <input type="text" name="username" placeholder="Username" required></li>
+    <li class="form-format">     <input type="password" name="password" placeholder="Password" required></li>
+    <li class="form-format">   <input type="submit" value="Login"></li>
+
+<small>Don't have an account? <a href="{{url_for('SignUp')}}">Sign Up</a></small>
+</ul>
+<small>
+  {% with messages=get_flashed_messages(with_categories=true) %}
+  {%if messages%}
+  {%for category,message in messages%}
+  <div class="alert alert-{{category}}">
+    {{message}}
+  </div>
+  {%endfor%}
+  {%endif%}
+  {%endwith%}
+</small>
+
+<div id="social-login">
+        <a href="#" class="fb btn">
+          <i class="fa fa-facebook fa-fw"></i> Login with Facebook
+        </a>
+        <a href="#" class="twitter btn">
+          <i class="fa fa-twitter fa-fw"></i> Login with Twitter
+        </a>
+        <a href="#" class="google btn">
+          <i class="fa fa-google fa-fw"></i> Login with Google+
+        </a>
+</div>
+
+
+
+  </form>
+
+
+-->
+
+{% endblock %}

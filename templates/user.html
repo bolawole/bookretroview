@@ -1,0 +1,48 @@
+{% extends "layout.html" %}
+
+{% block main_body%}
+
+
+{% with messages=get_flashed_messages(with_categories=true) %}
+{%if messages%}
+{%for category,message in messages%}
+<div class="alert alert-{{category}}">
+ <small>{{message}}</small> 
+</div>
+{%endfor%}
+{%endif%}
+{%endwith%}
+
+
+<form class="container mt-4" action="" method="POST">
+<input style="padding: 5px; font-size: 10px;" name="search" type="text" placeholder="TITLE ISBN OR AUTHOR" required>
+<button style="border-radius: 10px;">search</button>
+
+
+</form>
+
+
+{%if count%}
+<p class="container">{{count}} Result matched this search</p>
+{%endif%}
+{% if table %}
+<table class="container"style="width:100%">
+  <tr>
+  
+    <th>TITLE</th>
+  </tr>
+  
+ 
+    {% for each_data in datas%}
+    <tr>
+  <td><a href="{{url_for('review',name=each_data.title,id=each_data.id)}}">{{each_data.title}}</a></td>
+</tr>
+{%endfor%}
+</table>
+{%endif%}
+
+{%endblock%}
+
+{%block title%}
+{{g.user.username}}
+{%endblock%}

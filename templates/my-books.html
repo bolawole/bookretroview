@@ -1,0 +1,24 @@
+{%extends "layout.html" %}
+
+{%block main_body%}
+<!-- Default form login -->
+<form class="text-center p-5" action="" method="post">
+
+    <p class="h4 mb-4">Book Library</p>
+
+    <!-- Email -->
+    <input name="isbn" type="text" id="defaultLoginFormEmail" class="form-control mb-4" placeholder="isbn" required>
+      <input name="title" type="text" id="defaultLoginFormEmail" class="form-control mb-4" placeholder="title" required>
+        <input name="author" type="text" id="defaultLoginFormEmail" class="form-control mb-4" placeholder="author" required>
+
+    <!-- Password -->
+    <input name="year" type="text" id="defaultLoginFormPassword" class="form-control mb-4" placeholder="year">
+
+    <!-- Sign in button -->
+    <button class="btn btn-info btn-block my-4" type="submit">Search</button>
+
+
+
+</form>
+<!-- Default form login -->
+{%endblock%}

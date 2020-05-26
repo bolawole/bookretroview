@@ -1,0 +1,109 @@
+{%extends "layout.html"%}
+
+{%block main_body%}
+<div class="review-content">
+
+    <h5 style="text-align: center;">{{name}}</h5>
+    <div class="row">
+        <div class="col-lg-3">
+
+            {%if picture == "none"%}
+            <p>No image preview
+            {%else%}
+            </p>
+            <img class="container" style="height: 200px; width: auto;" src="{{picture}}" alt="">  
+            {%endif%}
+<small>
+          {%if reviews_avg_rating_goodreads < 2 %}
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star"></span>
+            <span class="fa fa-star"></span>
+            <span class="fa fa-star"></span>
+            <span class="fa fa-star"></span>
+            {%elif reviews_avg_rating_goodreads >= 2 and reviews_avg_rating_goodreads < 3 %}
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star"></span>
+            <span class="fa fa-star"></span>
+            <span class="fa fa-star"></span>
+            {%elif reviews_avg_rating_goodreads >=3  and reviews_avg_rating_goodreads < 4 %}
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star"></span>
+            <span class="fa fa-star"></span>
+            {%elif reviews_avg_rating_goodreads >=4  and reviews_avg_rating_goodreads < 5 %}
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star"></span>
+            {%else%}
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star checked"></span>
+
+            {%endif%}</small>
+        </div>
+            <div class="col-lg-9">
+
+                {%if description == "none"%}
+                <p>No description for this book
+                {%elif description == "There's no description for this book yet. Can you add one?"%}
+                <p>This book has no description. Can you <a>add one</a>?</p>
+                    {%else%}
+                </p>
+                <p>{{description}}</p>
+                {%endif%}
+
+            </div>
+
+        
+    </div>
+
+   
+<div class="row">
+    <div class="col-lg-6">
+    <h6 style="font-size: 20px; margin-top: 2em;">BOOK DETAILS</h6>
+    <ul>
+        <li>ISBN: {{isbn}}</li>
+        <li>LANGUAGE: ENGLISH</li>
+        <li>AUTHOR: {{author}}</li>
+        <li>YEAR: {{year}}</li>
+        <li>COPYRIGHT: {{year}}</li>
+     </ul>
+     <h6 class="container">Good Read Rating Details: <span style="font-size: 0.7em;">  {{reviews_count_goodreads}} reviews, Average Rating:{{reviews_avg_rating_goodreads}}</span> </h6>
+</div>
+<div class="col-lg-6">
+    <h6>Rate this book</h6>
+    <div class="star-rating">
+        <span class="fa fa-star"></span>
+        <span class="fa fa-star"></span>
+        <span class="fa fa-star"></span>
+        <span class="fa fa-star"></span>
+        <span class="fa fa-star"></span>
+    </div>
+    <p id="rvalue"></p>
+    <legend>Add a written Review <a style="float: right; margin-right: 80px; font-size: 15px;" href="">View Ratings</a></legend>
+    <form action="" method="POST">
+        <textarea id="subject" name="review" placeholder="Write a review about this book..." style="height:200px; width: 90%;"></textarea>       
+         <button>Submit</button>
+    </form>
+    <small>
+        {% with messages=get_flashed_messages(with_categories=true) %}
+        {%if messages%}
+        {%for category, message in messages%}
+          <p style="color: {{category}} ;">{{message}}</p>
+       
+        {%endfor%}
+        {%endif%}
+        {%endwith%}
+      </small> 
+</div>
+</div>
+</div>
+
+
+{%endblock%}

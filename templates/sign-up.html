@@ -1,0 +1,120 @@
+{%extends "layout.html"%}
+{%block main_body%}
+<div class="container">
+  <form method="POST" action="">
+    {{form.hidden_tag()}}
+    <fieldset class="form-group">
+      <legend class="">Sign Up</legend>
+      <div class="form-group">
+        {{form.username.label(class="form-control-label")}}
+        {%if form.username.errors%}
+        {{form.username(class="form-control is-invalid")}}
+        <div class="invalid-feedback">
+          {%for error in form.username.errors%}
+          <span>{{error}}</span>
+          {%endfor%}
+        </div>
+        
+        {%else%}
+        {{form.username(class="form-control")}}
+        {%endif%}
+      </div>
+      <div class="form-group">
+        {{form.email.label(class="form-control-label")}}
+        {%if form.email.errors%}
+        {{form.email(class="form-control is-invalid")}}
+        <div class="invalid-feedback">
+          {%for error in form.email.errors%}
+          <span>{{error}}</span>
+          {%endfor%}
+        </div>
+        
+        {%else%}
+        {{form.email(class="form-control")}}
+        {%endif%}  
+      </div>
+      <div class="form-group">
+        {{form.password.label(class="form-control-label")}}
+        {%if form.password.errors%}
+        {{form.password(class="form-control is-invalid")}}
+        <div class="invalid-feedback">
+          {%for error in form.password.errors%}
+          <span>{{error}}</span>
+          {%endfor%}
+        </div>
+        
+        {%else%}
+        {{form.password(class="form-control")}}
+        {%endif%}
+      </div>
+
+      <div class="form-group">
+        {{form.confirm_password.label(class="form-control-label")}}
+        {%if form.confirm_password.errors%}
+        {{form.confirm_password(class="form-control is-invalid")}}
+        <div class="invalid-feedback">
+          {%for error in form.confirm_password.errors%}
+          <span>{{error}}</span>
+          {%endfor%}
+        </div>
+        
+        {%else%}
+        {{form.confirm_password(class="form-control")}}
+        {%endif%} 
+      </div>
+      <div class="form-group">
+       
+        {{form.submit(class="btn btn-info my-4")}} 
+      </div>
+    </fieldset>
+  </form>
+  <small>You Have an account? <a href="{{url_for('login')}}">Log In</a></small>
+</div>
+
+
+
+
+
+<!--
+<form class="form-format" action="" method="post">
+  <div class="container">
+    <h1>Sign Up</h1>
+    <p>Please fill in this form to create an account.</p>
+    <hr>
+
+    <label for="name"><b>User Name</b></label>
+    <input  class="form-control" type="text" placeholder="Username" name="name" required>
+
+    <label for="email"><b>Email</b></label>
+    <input class="form-control" type="text" placeholder="Enter Email" name="email" required>
+
+    <label for="psw"><b>Password</b></label>
+    <input class="form-control" type="password" placeholder="Enter Password" name="psw" required>
+
+    <label for="psw-repeat"><b>Repeat Password</b></label>
+    <input class="form-control" type="password" placeholder="Repeat Password" name="psw-repeat" required>
+    <small>
+      {% with messages=get_flashed_messages(with_categories=true) %}
+      {%if messages%}
+      {%for category,message in messages%}
+      <div class="alert alert-{{category}}">
+        {{message}}
+      </div>
+      {%endfor%}
+      {%endif%}
+      {%endwith%}
+    </small>
+    <p>By creating an account you agree to our <a href="#" style="color:dodgerblue">Terms & Privacy</a>.</p>
+
+    <div class="clearfix">
+      <button type="button" class="cancelbtn">Cancel</button>
+      <button type="submit" class="signupbtn">Sign Up</button>
+    </div>
+    <small>You Have an account? <a href="{{url_for('login')}}">Log In</a></small>
+  </div>
+</form>-->
+{%endblock%}
+
+{%block title%}
+Sign Up
+{%endblock%}
