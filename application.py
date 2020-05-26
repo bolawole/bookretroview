@@ -10,7 +10,7 @@ from bs4 import BeautifulSoup
 
 
 app = Flask(__name__)
-app.config['SECRET_KEY']='1c59de0f14fddb79'
+app.config['SECRET_KEY']='YOUR_SECRET_KEY'
 
 # Check for environment variable
 if not os.getenv("DATABASE_URL"):
